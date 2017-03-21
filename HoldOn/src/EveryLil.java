@@ -35,6 +35,16 @@ public class EveryLil {
 		pp3.diminuirTemperatura();
 		pp3.diminuirTemperatura(); */
 		pp3.getTemperatura();
+		
+		System.out.println("\n");
+		
+		Lampada pp4 = new Lampada();
+		
+		System.out.println(pp4.getState());
+		pp4.turnOn();
+		System.out.println(pp4.getState());
+		pp4.turnOff();
+		System.out.println(pp4.getState());
 
 	}
 
