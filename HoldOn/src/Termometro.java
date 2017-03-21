@@ -10,14 +10,30 @@ public class Termometro {
 	}
 	
 	public void aumentarTemperatura() {
-		this.temperatura += 5;
+		if(validarTemperatura()) {
+			this.temperatura += 5;
+		}else {
+			System.out.println("Operação Inválida!");
+		}	
 	}
 	
 	public void diminuirTemperatura() {
-		this.temperatura -= 5;
+		if(validarTemperatura()) {
+			this.temperatura -= 5;
+		}else {
+			System.out.println("Operação Inválida!");
+		}
 	}
 	
 	public void getTemperatura() {
 		System.out.println("Temperatura: " + temperatura + "Cº");
+	}
+	
+	public boolean validarTemperatura() {
+		if(this.temperatura >= -20 && this.temperatura <= 100) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 }

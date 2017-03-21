@@ -19,14 +19,21 @@ public class EveryLil {
 		
 		System.out.println("\n");
 		
-		Termometro pp3 = new Termometro();
+		Termometro pp3 = new Termometro(95);
 		
 		pp3.getTemperatura();
 		pp3.aumentarTemperatura();
+		pp3.aumentarTemperatura();
 		pp3.getTemperatura();
+		/*pp3.diminuirTemperatura();
 		pp3.diminuirTemperatura();
 		pp3.diminuirTemperatura();
 		pp3.diminuirTemperatura();
+		pp3.diminuirTemperatura();
+		pp3.diminuirTemperatura();
+		pp3.diminuirTemperatura();
+		pp3.diminuirTemperatura();
+		pp3.diminuirTemperatura(); */
 		pp3.getTemperatura();
 
 	}
