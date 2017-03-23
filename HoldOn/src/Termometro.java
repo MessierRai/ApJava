@@ -1,6 +1,7 @@
 
 public class Termometro {
 	private int temperatura;
+	private int constante = 5;
 	
 	public Termometro() {
 		this.temperatura = 15;
@@ -11,7 +12,7 @@ public class Termometro {
 	
 	public void aumentarTemperatura() {
 		if(validarTemperatura()) {
-			this.temperatura += 5;
+			this.temperatura += constante;
 		}else {
 			System.out.println("Operação Inválida!");
 		}	
@@ -19,7 +20,7 @@ public class Termometro {
 	
 	public void diminuirTemperatura() {
 		if(validarTemperatura()) {
-			this.temperatura -= 5;
+			this.temperatura -= constante;
 		}else {
 			System.out.println("Operação Inválida!");
 		}
