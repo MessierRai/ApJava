@@ -8,8 +8,9 @@ public class TestArea {
 		um.getNome();
 		um.getCargo();
 		um.getSalarioMensal();
-		um.setSalarioMensal(-67.4);
+		um.setSalarioMensal(67.4);
 		um.getSalarioMensal();
+		um.getIdade();
 
 	}
 

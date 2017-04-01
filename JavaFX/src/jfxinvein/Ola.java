@@ -17,11 +17,12 @@ public class Ola extends Application {
 		StackPane raiz = new StackPane();
 		Label lblMensagem = new Label();
 		
-		lblMensagem.setText("Estou aprendendo JavaFX!");
+		lblMensagem.setText("So why the fuck, are those thoughts in my head? \nReach in, and pull them out!");
+		
 		raiz.getChildren().add(lblMensagem);
 		
-		Scene cena = new Scene(raiz, 250, 100);
-		palco.setTitle("Aprendendo JavaFX");
+		Scene cena = new Scene(raiz, 350, 100);
+		palco.setTitle("BFMV - JavaFX");
 		palco.setScene(cena);
 		palco.show();
 	}

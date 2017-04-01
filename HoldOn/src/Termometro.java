@@ -11,7 +11,7 @@ public class Termometro {
 	}
 	
 	public void aumentarTemperatura() {
-		if(validarTemperatura()) {
+		if(validarTemperatura(this.temperatura)) {
 			this.temperatura += constante;
 		}else {
 			System.out.println("Operação Inválida!");
@@ -19,7 +19,7 @@ public class Termometro {
 	}
 	
 	public void diminuirTemperatura() {
-		if(validarTemperatura()) {
+		if(validarTemperatura(this.temperatura)) {
 			this.temperatura -= constante;
 		}else {
 			System.out.println("Operação Inválida!");
@@ -30,8 +30,8 @@ public class Termometro {
 		System.out.println("Temperatura: " + temperatura + "Cº");
 	}
 	
-	public boolean validarTemperatura() {
-		if(this.temperatura >= -20 && this.temperatura <= 100) {
+	public boolean validarTemperatura(int temperatura) {
+		if(temperatura >= -20 && temperatura <= 100) {
 			return true;
 		}else {
 			return false;
