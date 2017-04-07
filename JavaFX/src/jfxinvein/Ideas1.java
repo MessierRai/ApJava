@@ -21,7 +21,7 @@ public class Ideas1 extends Application {
 	}
 
 	@Override
-	public void start(Stage palco) throws Exception {
+	public void start(Stage palco){
 		VBox raizEsquerda = new VBox(10);
 		VBox raizDireita = new VBox(10);
 		VBox raizCentro = new VBox(1);
@@ -51,13 +51,19 @@ public class Ideas1 extends Application {
 		Label lblRD = new Label("Digite outro algo:");
 		lblRD.setAlignment(Pos.CENTER);
 		TextField areaRD = new TextField();
-		Button btnRD = new Button("Enviar Algo (2)");
-		btnRD.setOnAction(new EventHandler<ActionEvent>() {
+		Button btnRD = new Button("->");
+		/*btnRD.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent evento) {
 				System.out.println("Caixa de coisas 2 - Conteúdo: " + areaRD.getText());				
 			}
+		}); */
+		
+		btnRD.setOnAction((a) -> {
+			
+			Ideas1a id = new Ideas1a();
+			id.start(palco);
 		});
 		
 		raizDireita.getChildren().addAll(lblRD, areaRD, btnRD);
