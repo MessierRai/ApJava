@@ -25,7 +25,7 @@ public class Main extends Application {
 		HBox opcoes = new HBox(10);
 		opcoes.setAlignment(Pos.CENTER);
 		
-		final Rectangle retangulo = new Rectangle(300, 100);
+		Rectangle retangulo = new Rectangle(300, 100);
 		
 		ComboBox<String> cbCorCena = new ComboBox<String>();
 		ComboBox<String> cbCorRetangulo = new ComboBox<String>();
