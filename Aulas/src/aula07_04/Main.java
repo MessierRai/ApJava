@@ -1,6 +1,6 @@
 package aula07_04;
 
-public class Main {
+/*public class Main {
 	public static void main(String[] args) {
 		A a = new A();
 		B b = new B("Raí");
@@ -14,4 +14,4 @@ public class Main {
 		
 		
 	}
-}
+}*/
