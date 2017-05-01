@@ -13,7 +13,7 @@ public class Octogono {
 		L[5] = new Lutador("Nerdaart", "EUA", 30, 1.81f, 105.7, 12, 2, 4);
 		
 		Luta UEC01 = new Luta();
-		UEC01.marcarLuta(L[0], L[1]);
+		UEC01.marcarLuta(L[5], L[4]);
 		UEC01.lutar();
 		
 	}

@@ -17,10 +17,9 @@ public class Banco {
 		return this.nome;
 	}
 	
-	public ContaCorrente criarConta(int numero, boolean especial, int limite) {
+	public void criarConta(int numero, boolean especial, int limite) {
 		this.contas.add(new ContaCorrente(numero, especial, limite));
 		System.out.println("Conta criada com sucesso!");
-		return null;
 		
 	}
 	
