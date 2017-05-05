@@ -8,6 +8,7 @@ public class Classe {
 	
 	public Classe(String nome) {
 		this.nome = nome;
+		this.alunos = new ArrayList<Aluno>();
 	}
 	
 	
@@ -16,7 +17,7 @@ public class Classe {
 		System.out.println("Nome  |  Matricula");
 		
 		for(Aluno alu : this.alunos) {
-			alu.getNomeMatricula();
+			System.out.println(alu.getNomeMatricula());
 		}
 	}
 	public void setAlunos(Aluno al) {
@@ -30,8 +31,8 @@ public class Classe {
 		System.out.println("Boletim Classe:");
 		System.out.println("Nome  |  Matricula  | Media");
 		for(Aluno al : this.alunos) {
-			System.out.println(al.getNomeMatricula());
-			System.out.println(" | " + al.media());
+			System.out.print(al.getNomeMatricula());
+			System.out.format(" | " + "%.1f \n", al.media());
 		}
 	}
 	

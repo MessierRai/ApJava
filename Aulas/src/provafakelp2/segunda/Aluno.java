@@ -11,9 +11,8 @@ public class Aluno {
 		this.matricula = matricula;
 	}
 	
-	public boolean getNomeMatricula() {
-		System.out.println(this.nome + " | " + this.matricula);
-		return false;
+	public String getNomeMatricula() {
+		return this.nome + " | " + this.matricula;
 	}
 	
 	public void addNotas(float n1, float n2, float n3, float n4) {
