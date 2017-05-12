@@ -8,4 +8,9 @@ public class Gerente extends Funcionario {
 		super(salario);
 	}
 
+	@Override
+	public float calculaSalario(int dias) {
+		return (getSalario() * dias) * 1.2f;
+	}
+
 }

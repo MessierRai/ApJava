@@ -1,8 +1,12 @@
 package aula12_05.cabstratas.empresa;
 
-public class Funcionario {
+public abstract class Funcionario {
 	
 	private float salario;
+	
+	public Funcionario() {
+		
+	}
 	
 	public Funcionario(float salario) {
 		this.salario = salario;
@@ -16,8 +20,6 @@ public class Funcionario {
 		return this.salario;
 	}
 	
-	public float calculaSalario(int dias) {
-		return dias * this.getSalario();
-	}
+	public abstract float calculaSalario(int dias);
 
 }
