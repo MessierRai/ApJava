@@ -13,9 +13,9 @@ import javafx.stage.Stage;
 public class Sobre {
 	
 	public Sobre(Stage palco) {
-		final Stage dialog = new Stage();
-		dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.initOwner(palco);
+		final Stage palcoSobre = new Stage();
+		palcoSobre.initModality(Modality.APPLICATION_MODAL);
+        palcoSobre.initOwner(palco);
 		
 		GridPane malhaSobre = new GridPane();
 		malhaSobre.setHgap(10);
@@ -44,8 +44,10 @@ public class Sobre {
         malhaSobre.getChildren().addAll(produto, gb, textinho, devsAP, devsNms);
         
         Scene cena = new Scene(malhaSobre, 330, 270);
-        dialog.setScene(cena);
-        dialog.show();
+        palcoSobre.setScene(cena);
+        palcoSobre.setResizable(false); // impede que a tela de "sobre" seja maximizada
+        palcoSobre.sizeToScene();
+        palcoSobre.show();
 	}
 
 }
