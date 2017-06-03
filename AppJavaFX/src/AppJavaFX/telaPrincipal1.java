@@ -9,12 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class telaPrincipal1 extends Application {
@@ -28,9 +26,12 @@ public class telaPrincipal1 extends Application {
 		malha.setVgap(10);
 		malha.setPadding(new Insets(15, 15, 15, 15));
 		malha.setAlignment(Pos.CENTER);
-		malha.setBackground(new Background(new BackgroundFill(Color.DEEPSKYBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 		
-		Scene cena = new Scene(fundoPrincipal, 400, 250);
+		Scene cena = new Scene(fundoPrincipal, 700, 500);
+		
+		Image logo = new Image("gymsystemrem.png");
+		Image icone = new Image("gymsystemicn.png");
+		ImageView iv = new ImageView(logo);
 		
 		MenuBar menuzin = new MenuBar(); //cria barra de menu
 		
@@ -55,6 +56,8 @@ public class telaPrincipal1 extends Application {
 		MenuItem sobreNois = new MenuItem("Sobre tudo");
 		MenuItem sair = new MenuItem("Sair");
 		
+		
+		//Acoes dos botoes
 		sair.setOnAction(new EventHandler<ActionEvent>() { //trata o evento de apertar no botão
 			@Override
 			public void handle(ActionEvent aperto) {
@@ -76,6 +79,8 @@ public class telaPrincipal1 extends Application {
 			public void handle(ActionEvent aperto) {
 				cadastrarBasic cc = new cadastrarBasic();
 				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();
 					cc.cds(malha);
 				} catch (Exception e) {
 					e.printStackTrace();				}
@@ -86,9 +91,20 @@ public class telaPrincipal1 extends Application {
 			@Override
 			public void handle(ActionEvent aperto) {
 				malha.getChildren().clear();
+				fundoPrincipal.setCenter(iv);
 			}
 		});
 		
+		sobreNois.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				@SuppressWarnings("unused")
+				Sobre sobre = new Sobre(palco);
+			}
+		});
+		
+		
+		//Add as coisas a seus devidos lugares
 		cadastrar.getItems().addAll(cdFunc, cdCli, cdBens, cdAtiv, inc); // add sub items ao menu
 		consulta.getItems().addAll(cnsCliente, cnsBens, cnsFunc, cnsAtiv, cnsEst); // add sub items ao menu
 		sobre.getItems().addAll(sobreNois, sair); // add sub items ao menu
@@ -96,10 +112,11 @@ public class telaPrincipal1 extends Application {
 		menuzin.getMenus().addAll(cadastrar, consulta, sobre); // add menua a barra
 		
 		fundoPrincipal.setTop(menuzin); // seta a barra de menu na borda de cima do BorderPane
-		fundoPrincipal.setCenter(malha);
+		fundoPrincipal.setCenter(iv);
 		
 		palco.setScene(cena);
 		palco.setTitle("Nome? Bem...");
+		palco.getIcons().add(icone);
 		palco.show();
 		
 	}
