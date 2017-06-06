@@ -3,10 +3,13 @@ package br.edu.theproject.sql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import br.edu.theproject.jdbc.ConexaoSQL;
 import br.edu.theproject.molde.Funcionario;
 import br.edu.theproject.molde.Personal;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class Ops {
 	
@@ -46,8 +49,21 @@ public class Ops {
 			stat.execute();
 			stat.close();
 			
-		} catch (Exception e) {
-			e.printStackTrace();		
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Confirmação");
+			alert.setHeaderText("Cadastrado com sucesso!");
+			alert.showAndWait();
+			
+		} catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException duplicate) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Erro");
+			alert.setHeaderText("CPF já cadastrado!");
+			alert.showAndWait();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 	}
