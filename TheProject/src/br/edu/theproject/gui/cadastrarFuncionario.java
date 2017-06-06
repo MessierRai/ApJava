@@ -4,6 +4,7 @@ package br.edu.theproject.gui;
 import br.edu.theproject.molde.Atendente;
 import br.edu.theproject.molde.Funcionario;
 import br.edu.theproject.molde.Gerente;
+import br.edu.theproject.molde.Personal;
 import br.edu.theproject.sql.Ops;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,6 +27,8 @@ public class cadastrarFuncionario {
 			sds.setText("Cadastrar Gerente");
 		}else if(who == 2) {
 			sds.setText("Cadastrar Atendente");
+		}else if(who == 3) {
+			sds.setText("Cadastrar Personal");
 		}
 			
 		Label nLbl = new Label("Nome: ");
@@ -65,7 +68,12 @@ public class cadastrarFuncionario {
 					
 					int idNg = op.obterId(na);
 					op.cdLogin(idNg);
-				}				
+				}else if(who == 3) {
+					Funcionario np = new Personal(txtFld.getText(), txtFld2.getText());
+					Ops op = new Ops();
+					
+					op.cdPersonal(np);
+				}
 			}
 		});
 		

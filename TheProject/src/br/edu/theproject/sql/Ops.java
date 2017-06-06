@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import br.edu.theproject.jdbc.ConexaoSQL;
 import br.edu.theproject.molde.Funcionario;
-import br.edu.theproject.molde.Personal;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
@@ -68,7 +67,7 @@ public class Ops {
 		
 	}
 	
-	public void cdPersonal(Personal prs) {
+	public void cdPersonal(Funcionario prs) {
 		try {
 			
 			Connection abrirConx = ConexaoSQL.getInstance().getConnection();

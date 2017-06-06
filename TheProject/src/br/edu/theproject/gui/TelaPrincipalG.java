@@ -39,6 +39,7 @@ public class TelaPrincipalG extends Application {
 		Menu cdFunc = new Menu("Cadastrar funcionário");
 		MenuItem cdGer = new MenuItem("Gerente");
 		MenuItem cdAtd = new MenuItem("Atendente");// cria sub items do menu
+		MenuItem cdPer = new MenuItem("Personal");
 		MenuItem cdCli = new MenuItem("Cadastrar cliente");
 		MenuItem cdBens = new MenuItem("Cadastrar bens");
 		MenuItem cdAtiv = new MenuItem("Cadastrar atividade");
@@ -84,6 +85,21 @@ public class TelaPrincipalG extends Application {
 					fundoPrincipal.setCenter(malha);
 					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
 					cf.cds(malha, 2);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		cdPer.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				cadastrarFuncionario cp = new cadastrarFuncionario();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					cp.cds(malha, 3);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -142,7 +158,7 @@ public class TelaPrincipalG extends Application {
 		
 		//Add as coisas a seus devidos lugares
 		cadastrar.getItems().addAll(cdFunc, cdCli, cdBens, cdAtiv, inc); // add sub items ao menu
-		cdFunc.getItems().addAll(cdGer, cdAtd);
+		cdFunc.getItems().addAll(cdGer, cdAtd, cdPer);
 		consulta.getItems().addAll(cnsCliente, cnsBens, cnsFunc, cnsAtiv, cnsEst); // add sub items ao menu
 		sobre.getItems().addAll(sobreNois, sair); // add sub items ao menu
 		
