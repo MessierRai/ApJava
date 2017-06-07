@@ -107,6 +107,21 @@ public class TelaPrincipalG extends Application {
 			}
 		});
 		
+		cnsCliente.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				consultarCliente cc = new consultarCliente();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					cc.cds(malha);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} );
+		
 		sair.setOnAction(new EventHandler<ActionEvent>() { //trata o evento de apertar no botão
 			@Override
 			public void handle(ActionEvent aperto) {
