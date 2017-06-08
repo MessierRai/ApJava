@@ -91,7 +91,7 @@ public class TelaPrincipalG extends Application {
 				}
 			}
 		});
-		
+		//cadastrar personal
 		cdPer.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent aperto) {
@@ -106,7 +106,7 @@ public class TelaPrincipalG extends Application {
 				}
 			}
 		});
-		
+		//consultar cliente
 		cnsCliente.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent aperto) {
@@ -121,13 +121,10 @@ public class TelaPrincipalG extends Application {
 				}
 			}
 		} );
-		
+		//logoff
 		sair.setOnAction(new EventHandler<ActionEvent>() { //trata o evento de apertar no botão
 			@Override
 			public void handle(ActionEvent aperto) {
-				//System.exit(0); // define o que fazer quando apertar em sair
-				
-				
 				Login lgin = new Login();  // volta a tela de login ..É um log-off
 				try {
 					lgin.start(palco);
@@ -153,7 +150,7 @@ public class TelaPrincipalG extends Application {
 				*/
 			}
 		});
-		
+		//para voltar a tela inicial
 		inc.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent aperto) {
@@ -161,7 +158,7 @@ public class TelaPrincipalG extends Application {
 				fundoPrincipal.setCenter(iv);
 			}
 		});
-		
+		//sobre
 		sobreNois.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent aperto) {
