@@ -3,17 +3,20 @@ package br.edu.theproject.molde;
 
 public class Cliente {
 	
+	private int id;
 	private String nome;
 	private String endereco1;
 	private String endereco2;
 	private int dt_nascDia;
 	private int dt_nascMes;
 	private int dt_nascAno;
-	private float altura;
+	private String dt_nasc;
+	private double altura;
 	private String turno;
 	private int id_personalFK;
+	private String nomepersonal;
 	
-	public Cliente(String nome, String endereco1, String endereco2, int dt_nascDia, int dt_nascMes, int dt_nascAno, float altura, String turno, int id_personalFK) {
+	public Cliente(String nome, String endereco1, String endereco2, int dt_nascDia, int dt_nascMes, int dt_nascAno, double altura, String turno, int id_personalFK) {
 		this.nome = nome;
 		this.endereco1 = endereco1;
 		this.endereco2 = endereco2;
@@ -23,6 +26,46 @@ public class Cliente {
 		this.altura = altura;
 		this.turno = turno;
 		this.id_personalFK = id_personalFK;
+		
+		
+	}
+	
+	public Cliente(int id,String nome, String endereco1, String endereco2, int dt_nascDia, int dt_nascMes, int dt_nascAno, double altura, String turno, int id_personalFK) {
+		this.id = id;
+		this.nome = nome;
+		this.endereco1 = endereco1;
+		this.endereco2 = endereco2;
+		this.dt_nascDia = dt_nascDia;
+		this.dt_nascMes = dt_nascMes;
+		this.dt_nascAno = dt_nascAno;
+		this.altura = altura;
+		this.turno = turno;
+		this.id_personalFK = id_personalFK;
+	}
+	
+	public Cliente(int id, String nome, String endereco1, String endereco2, String dt_nasc, double altura, String turno, String nomepersonal) {
+		this.id = id;
+		this.nome = nome;
+		this.endereco1 = endereco1;
+		this.endereco2 = endereco2;
+		this.dt_nasc = dt_nasc;
+		this.altura = altura;
+		this.turno = turno;
+		this.nomepersonal = nomepersonal;
+	}
+	
+	// usado para listar clientes individualmente
+	public Cliente(String nome, String endereco1, String endereco2, String dt_nasc, double altura, String turno, String nomepersonal) {
+		this.nome = nome;
+		this.endereco1 = endereco1;
+		this.endereco2 = endereco2;
+		this.dt_nasc = dt_nasc;
+		this.altura = altura;
+		this.turno = turno;
+		this.nomepersonal = nomepersonal;
+	}
+	public int getId(){
+		return id;
 	}
 	
 	public String getNome() {
@@ -46,7 +89,7 @@ public class Cliente {
 		return dt_nascAno;
 	}
 
-	public float getAltura() {
+	public double getAltura() {
 		return altura;
 	}
 	public String getTurno() {
@@ -58,10 +101,13 @@ public class Cliente {
 	public int getId_personalFK() {
 		return id_personalFK;
 	}
-	public void setId_personalFK(int id_personalFK) {
-		this.id_personalFK = id_personalFK;
+	public String getNomepersonal(){
+		return nomepersonal;
 	}
-	
-	
 
+	public String getDt_nasc() {
+		return dt_nasc;
+	}
+
+	
 }

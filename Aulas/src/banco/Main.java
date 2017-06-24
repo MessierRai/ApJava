@@ -4,12 +4,16 @@ package banco;
 public class Main {
 
 	public static void main(String[] args) {
-		Cliente ordinario = new Cliente("Ordinário", "666-6");
+		Conta c = new Conta("1234-5");
 		
-		
-		
-		System.out.println(ordinario.getNome());
-		System.out.println();
+		try {
+			c.deposito(-2);
+			c.saque(45);
+		} catch (SaqueException e) {
+			System.out.println(e.getMessage());
+		} catch (DepositoException e) {
+			System.out.println(e.getMessage());
+		}
 
 	}
 

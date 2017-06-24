@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -20,12 +21,12 @@ public class TelaPrincipalG extends Application {
 	@Override
 	public void start(Stage palco) throws Exception {
 		BorderPane fundoPrincipal = new BorderPane();
-		
 		GridPane malha = new GridPane();
 		malha.setHgap(10);
 		malha.setVgap(10);
 		malha.setPadding(new Insets(15, 15, 15, 15));
 		malha.setAlignment(Pos.CENTER);
+		
 		
 		Scene cena = new Scene(fundoPrincipal, 700, 500);
 		
@@ -36,22 +37,36 @@ public class TelaPrincipalG extends Application {
 		
 		//Cadastrar - Menu
 		Menu cadastrar = new Menu("Cadastrar"); // cria menu
-		Menu cdFunc = new Menu("Cadastrar funcionário");
+		Menu cdFunc = new Menu("Cadastrar Funcionário");
 		MenuItem cdGer = new MenuItem("Gerente");
 		MenuItem cdAtd = new MenuItem("Atendente");// cria sub items do menu
 		MenuItem cdPer = new MenuItem("Personal");
-		MenuItem cdCli = new MenuItem("Cadastrar cliente");
-		MenuItem cdBens = new MenuItem("Cadastrar bens");
-		MenuItem cdAtiv = new MenuItem("Cadastrar atividade");
+		MenuItem cdCli = new MenuItem("Cadastrar Cliente");
+		MenuItem cdBens = new MenuItem("Cadastrar Bens");
+		MenuItem cdAtiv = new MenuItem("Cadastrar Atividade");
+		MenuItem cdCliAtiv = new MenuItem("Associar Cliente-Atividade");
 		MenuItem inc = new MenuItem("Inicio");
 		
 		// Consultar - Menu
 		Menu consulta = new Menu("Consultar");
-		MenuItem cnsCliente = new MenuItem("Consultar cliente");
-		MenuItem cnsBens = new MenuItem("Consultar bens");
-		MenuItem cnsFunc = new MenuItem("Consultar funcionário");
-		MenuItem cnsAtiv = new MenuItem("Consultar atividade");
+		MenuItem cnsCliente = new MenuItem("Consultar Cliente");
+		MenuItem lsCliente = new MenuItem("Listar Clientes");
+		MenuItem cnsBens = new MenuItem("Listar Bens");
+		MenuItem cnsFunc = new MenuItem("Listar Funcionários");
+		MenuItem cnsAtiv = new MenuItem("Listar Atividades");
 		MenuItem cnsEst = new MenuItem("Consultar estatisticas");
+		
+		// Alterar - Menu
+		Menu alterar = new Menu("Alterar");
+		MenuItem altSenha = new MenuItem("Alterar Senha");
+		MenuItem apagarR = new MenuItem("Apagar Registro-Cliente");
+		MenuItem apagarR2 = new MenuItem("Apagar Registro-Funcionario");
+		
+		// Pagamento - menu
+		Menu pagar = new Menu ("Pagamento");
+		MenuItem pagamento = new MenuItem("Pagamento");
+		
+				
 		
 		// Sobre - Menu
 		Menu sobre = new Menu("Sobre");
@@ -114,13 +129,44 @@ public class TelaPrincipalG extends Application {
 				try {
 					fundoPrincipal.setCenter(malha);
 					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
-					cc.cds(malha);
+					cc.consultar(malha);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		} );
+		//listar clientes
+		lsCliente.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				listarClientes lc = new listarClientes();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					lc.lClientes(malha);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} );
+		//listar funcionarios
+		cnsFunc.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				ListarFuncionarios lf = new ListarFuncionarios();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					lf.lfuncionarios(malha);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} );
+		
 		//logoff
 		sair.setOnAction(new EventHandler<ActionEvent>() { //trata o evento de apertar no botão
 			@Override
@@ -134,22 +180,178 @@ public class TelaPrincipalG extends Application {
 				
 			}
 		});
-		
+		//cadastrar cliente
 		cdCli.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent aperto) {
-				/*
-				cadastrarBasic cc = new cadastrarBasic();
+				cadastroCliente cc = new cadastroCliente();
 				try {
-					fundoPrincipal.setCenter(malha);
-					malha.getChildren().clear();
-					cc.cds(malha);
+					ScrollPane sp = new ScrollPane();
+					
+					fundoPrincipal.setCenter(sp);
+					sp.autosize();
+					sp.setContent(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					cc.cCliente(malha);
+					
 				} catch (Exception e) {
-					e.printStackTrace();				
+					e.printStackTrace();
 				}
-				*/
 			}
 		});
+		
+		cnsEst.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				new GerarEstatisticasPopUp().stats(palco);
+			}
+		});
+		
+		//consulta bens
+		cnsBens.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				consultaBens cb = new consultaBens();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					cb.cnsBens(malha);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} );
+		// Consultar atividades
+		cnsAtiv.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				consultarAtividade ca = new consultarAtividade();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					ca.lsAtividades(malha);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} );
+		
+		// cadastrar atividade
+		cdAtiv.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				cadastrarAtividade ca = new cadastrarAtividade();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					ca.cadastraAtividade(malha);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		cdCliAtiv.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				AssociarCliAtiv aca = new AssociarCliAtiv();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					aca.associar(malha);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		
+		cdBens.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				cadastroBens ca = new cadastroBens();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					ca.cadastraBens(malha);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		//alterar senha
+		altSenha.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				alterarSenha as = new alterarSenha();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					as.alterar(malha);
+							
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} );
+		
+		//Apagar registro de clientes
+		apagarR.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				ApagarRegistroC as = new ApagarRegistroC();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					as.apagarR(malha);
+							
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} );
+		
+		apagarR2.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				ApagarRegistroF as = new ApagarRegistroF();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					as.apagarRF(malha);
+							
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		
+		//Pagamento
+		pagamento.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent aperto) {
+				Pagamentoln as = new Pagamentoln();
+				try {
+					fundoPrincipal.setCenter(malha);
+					malha.getChildren().clear();  //se nao apagar a malha, dá merda.
+					as.pagar(malha);
+							
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		} );
+		
+		
+				
 		//para voltar a tela inicial
 		inc.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -162,25 +364,29 @@ public class TelaPrincipalG extends Application {
 		sobreNois.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent aperto) {
-				@SuppressWarnings("unused")
-				Sobre sobre = new Sobre(palco);
+				new Sobre(palco);
 			}
 		});
 		
 		
 		//Add as coisas a seus devidos lugares
-		cadastrar.getItems().addAll(cdFunc, cdCli, cdBens, cdAtiv, inc); // add sub items ao menu
+		cadastrar.getItems().addAll(cdFunc, cdCli, cdBens, cdAtiv, cdCliAtiv, inc); // add sub items ao menu
 		cdFunc.getItems().addAll(cdGer, cdAtd, cdPer);
-		consulta.getItems().addAll(cnsCliente, cnsBens, cnsFunc, cnsAtiv, cnsEst); // add sub items ao menu
+		consulta.getItems().addAll(cnsCliente, lsCliente, cnsBens, cnsFunc, cnsAtiv, cnsEst); // add sub items ao menu
 		sobre.getItems().addAll(sobreNois, sair); // add sub items ao menu
+		alterar.getItems().addAll(altSenha, apagarR, apagarR2);
+		pagar.getItems().addAll(pagamento);
+	
+		menuzin.getMenus().addAll(cadastrar, consulta, alterar,pagar,  sobre); // add menua a barra
 		
-		menuzin.getMenus().addAll(cadastrar, consulta, sobre); // add menua a barra
 		
 		fundoPrincipal.setTop(menuzin); // seta a barra de menu na borda de cima do BorderPane
 		fundoPrincipal.setCenter(iv);
 		
 		palco.setScene(cena);
 		palco.setTitle("GymSystem");
+		palco.setResizable(false); // impede que a tela de "sobre" seja maximizada
+        palco.sizeToScene();
 		palco.show();
 		
 	}
